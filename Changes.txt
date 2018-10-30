@@ -15,13 +15,5 @@ made private, instance variables
 added toString, hashCode, equals
 (comparison of user objects is based on Name, case insensitive)
 
-
-
-
-UserResource
-
+UserResource class
 update the add User method
-
-
-http://localhost:8080/java-refactoring-test-0.0.1-SNAPSHOT/rest/users/find?name=Aman
-http://localhost:8080/java-refactoring-test-0.0.1-SNAPSHOT/rest/users/add?name=Aman&email=amandeep@gmail.com&role=developer,experience
