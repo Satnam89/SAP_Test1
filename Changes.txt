@@ -1,8 +1,8 @@
 UserDAO 
-access specifier - made private
+Access specifier made private
 
-saveUser method returns boolean status now, instead of void
-getUsers returns list instead of arraylist, (coding practise - coding to interfaces)
+saveUser method: returns boolean status now, instead of void
+getUsers: returns list instead of arraylist, (coding practise - coding to interfaces)
 
 getUsers - removed the try catch block
 deleteUser - removed try-catch, user compare is using equals method instead of ==
@@ -10,10 +10,13 @@ deleteUser - removed try-catch, user compare is using equals method instead of =
 updateUser - comparison based on equals method, return type is boolean now
 findUser - instead of == , equalsIgnoreMethod is used
 
-Users
-made private, instance variables
+Users class:
+Change access specifier private
 added toString, hashCode, equals
 (comparison of user objects is based on Name, case insensitive)
 
 UserResource class
 update the add User method
+
+TestCases:Unit and Integradtion class
+Test all the classes successfully.
