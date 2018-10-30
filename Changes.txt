@@ -1,0 +1,27 @@
+UserDAO 
+access specifier - made private
+
+saveUser method returns boolean status now, instead of void
+getUsers returns list instead of arraylist, (coding practise - coding to interfaces)
+
+getUsers - removed the try catch block
+deleteUser - removed try-catch, user compare is using equals method instead of ==
+
+updateUser - comparison based on equals method, return type is boolean now
+findUser - instead of == , equalsIgnoreMethod is used
+
+Users
+made private, instance variables
+added toString, hashCode, equals
+(comparison of user objects is based on Name, case insensitive)
+
+
+
+
+UserResource
+
+update the add User method
+
+
+http://localhost:8080/java-refactoring-test-0.0.1-SNAPSHOT/rest/users/find?name=Aman
+http://localhost:8080/java-refactoring-test-0.0.1-SNAPSHOT/rest/users/add?name=Aman&email=amandeep@gmail.com&role=developer,experience

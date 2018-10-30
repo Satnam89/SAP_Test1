@@ -1,71 +1,60 @@
 package com.h2rd.refactoring.usermanagement;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class UserDao {
 
-    public ArrayList<User> users;
+	private List<User> users = new ArrayList<User>();
 
-    public static UserDao userDao;
+	private static UserDao userDao;
 
-    public static UserDao getUserDao() {
-        if (userDao == null) {
-            userDao = new UserDao();
-        }
-        return userDao;
-    }
+	public static UserDao getUserDao() {
+		// lazy initialization
+		if (userDao == null) {
+			userDao = new UserDao();
+		}
+		return userDao;
+	}
 
-    public void saveUser(User user) {
-        if (users == null) {
-            users = new ArrayList<User>();
-        }
-        users.add(user);
-    }
+	public boolean saveUser(User user) {
+		return users.add(user);
+	}
 
-    public ArrayList<User> getUsers() {
-        try {
-            return users;
-        } catch (Throwable e) {
-            System.out.println("error");
-            return null;
-        }
-    }
+	public List<User> getUsers() {
+		return users;
+		
+	}
 
-    public void deleteUser(User userToDelete) {
-        try {
-            for (User user : users) {
-                if (user.getName() == userToDelete.getName()) {
-                    users.remove(user);
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+	public boolean deleteUser(User userToDelete) {
 
-    public void updateUser(User userToUpdate) {
-        try {
-            for (User user : users) {
-                if (user.getName() == userToUpdate.getName()) {
-                    user.setEmail(userToUpdate.getEmail());
-                    user.setRoles(userToUpdate.getRoles());
-                }
-            }
-        } catch (RuntimeException e) {
-            e.printStackTrace();
-        }
-    }
+		for (User user : users) {
+			if (user.equals(userToDelete)) {
+				return users.remove(user);
+			}
+		}
+		return false;
+	}
+	public boolean updateUser(User userToUpdate) {
 
-    public User findUser(String name) {
-        try {
-            for (User user : users) {
-                if (user.getName() == name) {
-                    return user;
-                }
-            }
-        } catch (NullPointerException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
+		boolean status=false;
+		for (User user : users) {
+			if (user.equals(userToUpdate)) {
+				user.setEmail(userToUpdate.getEmail());
+				user.setRoles(userToUpdate.getRoles());
+				status = true;
+				break;
+			}
+		}
+		return status;
+	}
+
+	public User findUser(String name) {
+		for (User user : users) {
+			if (user.getName().equalsIgnoreCase(name)) {
+				return user;
+			}
+		}
+		return null;
+	}
 }
